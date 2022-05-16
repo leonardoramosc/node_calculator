@@ -24,6 +24,21 @@ async function calculate(req, res) {
   }
 }
 
+async function getHistory(req, res) {
+  try {
+    const history = await History.find()
+    res.json({
+      history
+    })
+  } catch (error) {
+    console.log(error)
+    res.json({
+      error: error.message
+    })
+  }
+}
+
 module.exports = {
-  calculate
+  calculate,
+  getHistory
 }
